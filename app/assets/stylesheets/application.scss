@@ -14,3 +14,55 @@
 
 @import "bootstrap";
 @import "custom.css";
+@import "toggler.css";
+
+body {
+    letter-spacing: -0.3px;
+}
+
+input {
+    letter-spacing: -0.3px;
+    padding: 8px 15px; 
+    border-radius: 0px;
+    border: none;
+    border: 1px solid black;
+}
+
+form input {
+    margin: 3px 0;
+}
+
+.navbar {
+    background-color: white;
+    border-bottom: 2px solid black;
+    position: fixed;
+}
+
+.navbar-brand {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-link {
+    padding: 10px;
+    margin: 0 5px;
+    font-size: 13.5px;
+    color: black;
+    text-decoration: none;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.nav-link:hover {
+    color: white;
+    background-color: black;
+    transform: scale(1.08);
+}
+
+#btnFullscreen:hover {
+    background-color: transparent;
+    transform: scale(1.5);
+}
+

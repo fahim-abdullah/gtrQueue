@@ -1,0 +1,69 @@
+<section id="order">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-12">
+                <div class="heading">
+                    <h1>Create an Order</h1>
+                    <p>Create an order here to initiate delivery process.</p>
+                </div>
+
+                <%= form_for @order do |f| %>
+                    <%= f.text_field :prefix, class: 'col-2', placeholder: "Prefix", :required => true, maxlength: 3, minlength: 3 %>
+                    <%= f.text_field :awbnum, class: 'col-8', placeholder: "AWB Number", :required => true, maxlength: 8, minlength: 8 %>
+
+                    <button type="button" id="tcBtn" class="btn tcBtn shadow-none" >Terminal Charge : UNPAID</button>
+                    <%= f.text_field :terminal_charge, class: "col-2", :id => "tc", :required => true, placeholder: "TC", hidden: true %>
+                    <div>
+                        <label>Pieces : </label>
+                        <%= f.text_field :pieces, class: 'col-3' %>
+                    </div>
+                    <div class="form-group">
+                            <input type="checkbox" data-toggle="toggle" data-style="ios" data-onstyle="warning" data-offstyle="success" id="per-btn">
+                            <label> Perishable</label>
+                            <%= f.text_field :perishable_status, :id => "per-status", value: "Non-Perishable", :required => true, hidden: true %>
+                    </div>
+                    <hr>
+                    <%= f.submit class: "btn btn-primary" %>
+                <% end %>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    // TERMINAL CHARGE BUTTON
+    // function submitButtonStyle(_this) {
+    //   _this.style.backgroundColor = "green";
+    // }
+    $('#tcBtn').on('click',function(){
+        // $(this).toggleClass('btn-success');
+    
+        if ($(this).text() == "Terminal Charge : UNPAID"){
+            $(this).text("Terminal Charge : PAID");
+            $(this).css("background-color", "#00ae16");
+        }
+        else {
+            $(this).text("Terminal Charge : UNPAID");
+            $(this).css("background-color", "red");
+        }
+        
+        if ($('#tc').val() == ""){
+            $('#tc').val("Paid");
+        }
+        else {
+            $('#tc').val("");
+        }
+    });
+
+    // PERISHABLE BUTTON
+    $("#per-btn").change(function() {
+    var value;
+    if (this.checked) {
+        value = "Perishable";
+    } else {
+        value = "Non-Perishable"
+    }
+    $("#per-status").val(value);
+    });
+</script>

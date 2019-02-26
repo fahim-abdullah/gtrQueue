@@ -1,1 +1,19 @@
 @import "bootstrap";
+
+.heading {
+    padding: 100px 0 30px 0;
+}
+
+.tcBtn {
+    background-color: red;
+    color: white;
+}
+
+.tcBtn:hover {
+	color: white;
+}
+
+#tcBtn {
+    margin: 3px 0;
+    border-radius: 2px;   
+}
