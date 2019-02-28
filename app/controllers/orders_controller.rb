@@ -26,6 +26,10 @@ class OrdersController < ApplicationController
 		@order = Order.find(params[:order_id])
 	end
 
+	def deliver
+		@order = Order.find(params[:order_id])
+	end
+
 	def update 
 		@order = Order.find(params[:id])
 		if @order.update(order_params)
@@ -44,8 +48,10 @@ class OrdersController < ApplicationController
 	def requests 
 		@orders = Order.all
 	end
-
 	
+	def progress
+		@orders = Order.all
+	end
 
 	private
 	def order_params 

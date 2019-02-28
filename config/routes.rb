@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   root 'orders#status'
 
   resources :orders do
-  	get 'documents', 'locate'
+  	get 'documents', 'locate', 'deliver'
   end
 
   get 'status', to: 'orders#status'
   get 'requests', to: 'orders#requests'
+  get 'progress', to: 'orders#progress'
 
 end

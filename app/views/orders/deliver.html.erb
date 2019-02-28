@@ -1,0 +1,75 @@
+<style type="text/css">
+    h3 {
+        font-weight: 300;
+    }
+    .form-control {
+        border-style: none;
+        border: 1px solid black;
+        border-radius: 1px;
+    }
+    
+    .jumbotron {
+        background: #f2f2f2;
+    }
+</style>
+<section>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Delivery Page</h1>
+            <p>But there's no way that it's not going there.</p>
+            
+            <div class="jumbotron bg-white text-dark">
+                <div class="container">
+                    <h3>AWB Number : <%= "#{@order.prefix}-#{@order.awbnum}"%></h3>
+                    <h3>Pieces : <%= "#{@order.pieces}"%> </h3>
+                    <h3>Time of Request : <%= "#{@order.created_at.strftime('%I:%M %p')}"%></h3>
+                    <hr class="bg-white">
+
+                    <%= form_for @order do |f| %>
+                    
+                        <h3 class="text-danger">Delivered By : </h3>
+                        <%= f.text_field :delivered_by, class: "col form-control", :required => true %>
+                    
+                        <button type="button" class='btn-auth align-middle'>Authenticate</button>
+                        <%= f.text_field :delivery_time, id: "authenticate", :required => true, hidden: true %>
+                        <%= f.submit "Deliver", class: "btn btn-primary", id: "delivery-submit", disabled: true %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(function bruh() {
+        var d = new Date();
+        var amOrPm = (d.getHours() < 12) ? "AM" : "PM";
+        var hour = (d.getHours() < 12) ? d.getHours() : d.getHours() - 12;
+        var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+        var strTime;
+        
+        // Animation
+        var btn = $(".btn-auth");
+        btn.on("click", function() {
+            $(this).addClass('btn-progress');
+            setTimeout(function() {
+                btn.addClass('btn-fill')
+            }, 300);
+            setTimeout(function() {
+                btn.removeClass('btn-fill')
+            }, 1500);
+            setTimeout(function() {
+                btn.addClass('btn-complete')
+            }, 1500);
+            
+            // Time
+            strTime = hour + ':' + minutes + ' ' + amOrPm; 
+            $("#authenticate").val(strTime);
+            
+            // Submit Button
+            setTimeout(function() {
+                document.getElementById("delivery-submit").disabled = false;
+            }, 1500);
+        });
+    })
+</script>

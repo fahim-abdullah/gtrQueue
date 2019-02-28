@@ -30,16 +30,16 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="requests-2.php">Delivery Requests</a>
+                        <%= link_to "Delivery Requests", requests_path, :class => 'nav-link' %>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="status.php">Check Status</a>
+                        <%= link_to "Check Status", status_path, :class => 'nav-link' %>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="delivery.php">Delivery Area</a>
+                        <%= link_to "Delivery Area", :class => 'nav-link' %>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="progress_display.php">Progress</a>
+                        <%= link_to "Progress", progress_path, :class => 'nav-link' %>
                     </li>
                     <li class="nav-item">
                         <%= link_to image_tag("icons8-expand-filled-96.png", width: '18px'), '', :onclick => 'toggleFullscreen()', :id => 'btnFullscreen', :class => 'nav-link' %>

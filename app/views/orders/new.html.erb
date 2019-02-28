@@ -14,7 +14,7 @@
                 <%= f.text_field :terminal_charge, class: "col-2", :id => "tc", :required => true, placeholder: "TC", hidden: true %>
                 <div>
                     <label>Pieces : </label>
-                    <%= f.text_field :pieces, class: 'col-3' %>
+                    <%= f.text_field :pieces, class: 'col-3', :required => true %>
                 </div>
                 <div class="form-group">
                         <input type="checkbox" data-toggle="toggle" data-style="ios" data-onstyle="warning" data-offstyle="success" id="per-btn">
@@ -24,7 +24,6 @@
                 <hr>
                 <%= f.submit class: "btn btn-primary" %>
             <% end %>
-
         </div>
     </div>
 </div>

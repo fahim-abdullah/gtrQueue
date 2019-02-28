@@ -15,6 +15,7 @@
 @import "bootstrap";
 @import "custom.css";
 @import "toggler.css";
+@import "deliver.css";
 
 body {
     letter-spacing: -0.3px;
@@ -73,5 +74,12 @@ form input {
   width: 25px;
   border-radius: 50%;
   margin: auto 0;
+}
+
+.btn {
+    font-weight: 100;
+    padding: 8px 14px;
+    margin: 0 5px;
+    border-radius: 3px;
 }
 

@@ -39,7 +39,7 @@
                         <!-- <td></td> -->
 
                         <% if order.perishable_status == "Perishable" %>
-                        <td><%= "#{order.prefix}-#{order.awbnum}"%> <span style="font-size: 16px" class="badge badge-danger">PER</span></td>
+                        <td><%= "#{order.prefix}-#{order.awbnum}"%> <span style="font-size: 18px" class="badge badge-danger align-text-top">PER</span></td>
                         <% else %>
                         <td><%= "#{order.prefix}-#{order.awbnum}"%></td>
                         <% end %>

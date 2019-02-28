@@ -20,13 +20,13 @@
                     <div class="form-group">
                         <label>Release Type : </label>
                         <button type="button" id="partial" class="btn btn-primary">Normal</button>
-                        <%= f.text_field :partial_release, id: "partial-status", value: "Normal", :required => true %>
+                        <%= f.text_field :partial_release, id: "partial-status", value: "Normal", :required => true, hidden: true %>
                     </div>
                     
                     <div class="form-group">
                         <input type="checkbox" data-toggle="toggle" data-style="ios" data-onstyle="success" data-offstyle="danger" id="located-btn">
                         <label>Shipment Located</label>
-                        <%= f.text_field :located_time, id: "located-time", value: "", :required => true %>
+                        <%= f.text_field :located_time, id: "located-time", value: "", :required => true, hidden: true %>
                     </div>
                     <hr>
                     <%= f.submit "Update Progress", class: "btn btn-outline-primary" %>
