@@ -21,7 +21,6 @@
             </a>
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" style="border-color: rgb(120,120,120); border-radius:2px; padding: 4px 8px">
-                link_to "Profiles", profiles_path
                 <%= image_tag("ham.png", width: '28px') %>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -52,7 +51,5 @@
 
     <%= yield %>
   </body>
-    <% content_for(:header) do %>
-        <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"></script>
-    <% end %>
+
 </html>

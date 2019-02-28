@@ -1,0 +1,39 @@
+<section id="doc">
+	<div class="container">
+		<div class="col-12 jumbotron" align="center">
+			<h1>Documents Room</h1>
+			<p class="col-md-8">Turn on the button only once the documents are arranged.</p>
+
+			<div class="cargo-info col-12 col-md-6">
+                <div class="jumbotron bg-warning">
+                	<p>AWB Number : <%= "#{@order.prefix}-#{@order.awbnum}" %></p>
+                </div>
+                <%= form_for @order do |f| %>
+                    <div class="form-group">
+                        <input type="checkbox" data-toggle="toggle" data-style="ios" data-onstyle="success" data-offstyle="danger" id="doc-btn">
+                        <label>Documents Arranged</label>
+                        <%= f.text_field :arranged_time, id: "doc-status", value: "", :required => true, hidden: true %>
+                    </div>
+                    <hr>
+                    <%= f.submit "Update Progress", class: "btn btn-outline-primary" %>
+                <% end %>
+            </div>
+		</div>
+	</div>
+</section>
+
+<script type="text/javascript">
+	$("#doc-btn").change(function() {
+    var d = new Date();
+    var amOrPm = (d.getHours() < 12) ? "AM" : "PM";
+    var hour = (d.getHours() < 12) ? d.getHours() : d.getHours() - 12;
+    var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+    var strTime;
+    
+    if (this.checked) {
+        strTime = hour + ':' + minutes + ' ' + amOrPm; 
+    }
+    $("#doc-status").val(strTime);
+    
+	});
+</script>
