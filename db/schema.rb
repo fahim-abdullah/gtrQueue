@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_26_084505) do
+ActiveRecord::Schema.define(version: 2019_02_28_045946) do
 
   create_table "orders", force: :cascade do |t|
     t.string "prefix"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_02_26_084505) do
     t.string "arranged_time"
     t.string "delivered_by"
     t.string "delivery_time"
+    t.datetime "created_at"
   end
 
 end
