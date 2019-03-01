@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 	before_action :set_timezone
+	before_action :order_find, only: [:documents, :locate, :deliver]
 
 	def index
 		@orders = Order.all
@@ -25,7 +26,7 @@ class OrdersController < ApplicationController
 	def show
 		@order = Order.find(params[:id])
 	end
-
+	
 	def update 
 		@order = Order.find(params[:id])
 		if @order.update(order_params)
@@ -35,24 +36,24 @@ class OrdersController < ApplicationController
 			# render 'documents'
 		end
 	end
-
+	
 	def destroy
 		@order = Order.find(params[:id])
 		@order.destroy
 		# flash[:notice] = "Article was successfully deleted"
 		redirect_to orders_path
 	end
-
+	
 	def documents 
-		@order = Order.find(params[:order_id])
+		
 	end
 
 	def locate
-		@order = Order.find(params[:order_id])
+		
 	end
 
 	def deliver
-		@order = Order.find(params[:order_id])
+		
 	end
 
 	def status_table
@@ -78,6 +79,9 @@ class OrdersController < ApplicationController
 	end
 	def set_timezone
 		Time.zone = "Kuala Lumpur"
-
 	end
+	def order_find
+      @order = Order.find(params[:order_id])
+    end
+
 end
