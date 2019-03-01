@@ -1,0 +1,57 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <br>
+                <h1>Delivery Table</h1>
+                
+                <br>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover">
+                    <thead align="center">
+                        <tr>
+                            
+                            <th style="width: 40%">AWB Number</th>
+                            <th style="width: 15%">Pieces</th>
+                            <th style="width: 15%">Pieces Found</th>
+                            <th style="width: 20%">Time of Request</th>
+                            <th style="width: 10%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody align="center">
+                        <% @orders.each do |order| %>
+                            <% if order.delivery_time == nil %>
+                            <tr>
+                                <% if order.perishable_status == "Perishable" %>
+                                <td><%= "#{order.prefix}-#{order.awbnum}"%> <span style="font-size: 18px" class="badge badge-danger align-text-top">PER</span></td>
+                                <% else %>
+                                <td><%= "#{order.prefix}-#{order.awbnum}"%></td>
+                                <% end %>
+                                <td><%= "#{order.pieces}"%></td>
+                                <td><%= "#{order.pieces_found}"%></td>
+                                <td><%= order.created_at.strftime("%I:%M %p") if order.created_at != nil %></td>
+
+                                <!-- <%  order.delivery_time.present? %> -->
+                                <% if order.located_time.present? && order.arranged_time.present? %>
+                                <td>
+                                    <%= link_to 'Deliver', order_deliver_path(order), class: 'btn btn-primary' %>
+                                </td>
+                                <% else %>
+                                <td>
+                                    <button class="btn btn-danger" disabled>Deliver</button>
+                                </td>
+                                <% end %>
+                                
+                            </tr>
+                            <% end %>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

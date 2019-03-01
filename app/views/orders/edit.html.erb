@@ -1,0 +1,23 @@
+<style type="text/css">
+	.form-inline * {
+		margin: 0 10px 0 0;
+	}
+</style>
+
+<section>
+	<div class="container">
+		<br>
+		<h1>Edit Records <span style="font-size: 15px" class="badge badge-dark align-top">Admin Only</span></h1>
+		<hr><br>	
+
+		<%= form_for @order do |f| %>
+			
+			<div class="form-inline">
+				<label>Bruh</label>
+				<%= f.text_field :delivered_by, class: "col form-control", :required => true %>
+			</div>
+
+		<% end %>
+
+	</div>
+</section>

@@ -1,6 +1,14 @@
 class OrdersController < ApplicationController
 	before_action :set_timezone
 
+	def index
+		@orders = Order.all
+	end
+
+	def edit
+		@order = Order.find(params[:id])
+	end
+
 	def new
 		@order = Order.new
 	end
@@ -8,7 +16,7 @@ class OrdersController < ApplicationController
 	def create
 		@order = Order.new(order_params)
 		if @order.save
-			redirect_to status_path
+			redirect_to status_table_path
 		else
 			render 'new'
 		end
@@ -16,6 +24,23 @@ class OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
+	end
+
+	def update 
+		@order = Order.find(params[:id])
+		if @order.update(order_params)
+			# flash[:notice] = "Updated"
+			redirect_to progress_table_path
+		else
+			# render 'documents'
+		end
+	end
+
+	def destroy
+		@order = Order.find(params[:id])
+		@order.destroy
+		# flash[:notice] = "Article was successfully deleted"
+		redirect_to orders_path
 	end
 
 	def documents 
@@ -30,26 +55,20 @@ class OrdersController < ApplicationController
 		@order = Order.find(params[:order_id])
 	end
 
-	def update 
-		@order = Order.find(params[:id])
-		if @order.update(order_params)
-			flash[:notice] = "Updated"
-			redirect_to status_path
-		else
-			# render 'documents'
-		end
-	end
-
-	def status
+	def status_table
 		@orders = Order.all
 		# @orders.map {|order| order.created_at.strftime("%I:%M") if order.created_at != nil }
 	end
 
-	def requests 
+	def requests_table
 		@orders = Order.all
 	end
-	
-	def progress
+
+	def progress_table
+		@orders = Order.all
+	end
+
+	def delivery_table
 		@orders = Order.all
 	end
 

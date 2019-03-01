@@ -57,7 +57,7 @@
 	$("#located-btn").change(function() {
 	    var d = new Date();
 	    var amOrPm = (d.getHours() < 12) ? "AM" : "PM";
-	    var hour = (d.getHours() < 12) ? "0" + d.getHours() : "0" + (d.getHours() - 12);
+	    var hour = (d.getHours() < 12) ? d.getHours() : "0" + (d.getHours() - 12);
 	    var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
 	    var strTime;
 	    

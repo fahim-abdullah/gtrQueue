@@ -1,21 +1,28 @@
+<style type="text/css">
+    table thead tr th, table tbody tr td {
+        font-size: 18px;
+    }
+    .btn {
+        padding: 3px 12px;
+    }
+</style>
+
 <section>
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <br>
-                <h1>Delivery Requests</h1>
-                <p>Update Locating or Documents Arrangement progress.</p>
-                <br>
+                <h1>Orders Index</h1>
+                <hr><br>
             </div>
         </div>
         
         <div class="row">
             <div class="col-12">
                 <table class="table table-hover">
-                    <thead class="thead-dark">
+                    <thead>
                         <tr>
                             <th>AWB Number</th>
-                            <th>Pieces</th>
                             <th>Time of Request</th>
                             <th>Action</th>
                         </tr>
@@ -24,21 +31,18 @@
                         <% @orders.each do |order| %>
                         <tr>
                             <% if order.perishable_status == "Perishable" %>
-                            <td><%= "#{order.prefix}-#{order.awbnum}"%> <span style="font-size: 18px" class="badge badge-danger align-text-top">PER</span></td>
+                            <td><%= "#{order.prefix}-#{order.awbnum}"%> <span style="font-size: 12px" class="badge badge-danger align-text-top">PER</span></td>
                             <% else %>
                             <td><%= "#{order.prefix}-#{order.awbnum}"%></td>
                             <% end %>
-
-                            <td><%= order.pieces %></td>
                             <td><%= order.created_at.strftime("%I:%M %p") if order.created_at != nil %></td>
-
                             <td>
-                                <%= link_to 'Locate', order_locate_path(order), class: 'btn btn-success' %> 
-                                <%= link_to 'Documents', order_documents_path(order), class: 'btn btn-warning' %> 
+                                <%= link_to 'Edit', edit_order_path(order), class: 'btn btn-sm btn-outline-warning' %>
+                                <%= link_to 'Show', order_path(order), class: 'btn btn-sm btn-outline-primary' %>
+                                <%= link_to 'Delete', order_path(order), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %>
                             </td>
                         </tr>
                         <% end %>
-
                     </tbody>
                 </table>
             </div>

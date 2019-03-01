@@ -1,0 +1,48 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <br>
+                <h1>Delivery Requests</h1>
+                <p>Update Locating or Documents Arrangement progress.</p>
+                <br>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>AWB Number</th>
+                            <th>Pieces</th>
+                            <th>Time of Request</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @orders.each do |order| %>
+                        <% if order.located_time == nil || order.arranged_time == nil %>
+                        <tr>
+                            <% if order.perishable_status == "Perishable" %>
+                            <td><%= "#{order.prefix}-#{order.awbnum}"%> <span style="font-size: 18px" class="badge badge-danger align-text-top">PER</span></td>
+                            <% else %>
+                            <td><%= "#{order.prefix}-#{order.awbnum}"%></td>
+                            <% end %>
+
+                            <td><%= order.pieces %></td>
+                            <td><%= order.created_at.strftime("%I:%M %p") if order.created_at != nil %></td>
+
+                            <td>
+                                <%= link_to 'Locate', order_locate_path(order), class: 'btn btn-success' %>
+                                <%= link_to 'Documents', order_documents_path(order), class: 'btn btn-warning' %> 
+                            </td>
+                        </tr>
+                        <% end %>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

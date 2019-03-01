@@ -1,0 +1,57 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <br>
+                <h1>Progress Display</h1>
+                <p>Check what percentage of order's delivery is complete.</p>
+                <br>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            
+                            <th style="width: 40%">AWB Number</th>
+                            <th style="width: 20%">Time of Request</th>
+                            <th style="width: 40%">Progress</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @orders.each do |order| %>
+                        <tr>
+                            <% if order.perishable_status == "Perishable" %>
+                            <td><%= "#{order.prefix}-#{order.awbnum}"%> <span style="font-size: 18px" class="badge badge-danger align-text-top">PER</span></td>
+                            <% else %>
+                            <td><%= "#{order.prefix}-#{order.awbnum}"%></td>
+                            <% end %>
+                            <td><%= order.created_at.strftime("%I:%M %p") if order.created_at != nil %></td>
+                            
+                            <% if order.delivery_time.present? %>
+                                <td>
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:100%; text-align: left"> 100%</div>
+                                </td>
+                                <% elsif order.located_time.present? && order.arranged_time.present? %>
+                                <td>
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="width:75%; text-align: left"> 75%</div>
+                                </td>
+                                <% elsif order.located_time.present? || order.arranged_time.present? %>
+                                <td>
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="width:50%; text-align: left"> 50%</div>
+                                </td>
+                                <% else %>
+                                <td>
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" style="width:25%; text-align: left"> 25%</div>
+                                </td>
+                            <% end %>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

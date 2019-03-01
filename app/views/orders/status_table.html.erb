@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12">
             <div class="heading">
-                <h1>Requests Status</h1>
+                <h1>Order Status</h1>
             </div>
         </div>
     </div>
@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-12">
             <table class="table table-hover table-status" style="text-align: center">
-                <thead class="thead-dark">
+                <thead>
                     <tr>
                         <th></th>
                         <!-- <th>Queue</th> -->
@@ -28,15 +28,13 @@
                         <!-- style="opacity: 0.9" class="bg-danger -->
                         <!-- spinner-grow -->
                         <!-- spinner-border -->
-                        <% if order.located_time.present? && order.arranged_time.present? %>
+                        <% if order.delivery_time.present? %>
                         <td align="center" class="align-middle"><div class="dot bg-success"></div></td>
                         <% elsif order.located_time.present? || order.arranged_time.present? %>
                         <td align="center" class="align-middle"><div class="dot bg-warning"></div></td>
                         <% else %>
                         <td align="center" class="align-middle"><div class="dot bg-danger"></div></td>
                         <% end %>
-
-                        <!-- <td></td> -->
 
                         <% if order.perishable_status == "Perishable" %>
                         <td><%= "#{order.prefix}-#{order.awbnum}"%> <span style="font-size: 18px" class="badge badge-danger align-text-top">PER</span></td>
