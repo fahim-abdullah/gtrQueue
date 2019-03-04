@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
 		@order = Order.find(params[:id])
 		if @order.update(order_params)
 			# flash[:notice] = "Updated"
-			redirect_to progress_table_path
+			redirect_to status_table_path
 		else
 			# render 'documents'
 		end
@@ -45,15 +45,12 @@ class OrdersController < ApplicationController
 	end
 	
 	def documents 
-		
 	end
 
 	def locate
-		
 	end
 
 	def deliver
-		
 	end
 
 	def status_table
@@ -81,7 +78,10 @@ class OrdersController < ApplicationController
 		Time.zone = "Kuala Lumpur"
 	end
 	def order_find
-      @order = Order.find(params[:order_id])
+		if !session[:order_id].nil?
+      		@order = Order.find(params[:order_id])
+      	else
+      		redirect_to new_order_path
+      	end
     end
-
 end
