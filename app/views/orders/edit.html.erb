@@ -1,23 +1,75 @@
 <style type="text/css">
-	.form-inline * {
-		margin: 0 10px 0 0;
+	.form-inline .form-control, .btn {
+		margin: 5px 10px;
+	}
+	.form-inline label {
+		margin: 0 0 0 10px;
+		font-size: 16px;
 	}
 </style>
 
 <section>
 	<div class="container">
 		<br>
-		<h1>Edit Records <span style="font-size: 15px" class="badge badge-dark align-top">Admin Only</span></h1>
+		<h1>Edit Record <span style="font-size: 15px" class="badge badge-warning align-top">Admin Only</span></h1>
 		<hr><br>	
 
 		<%= form_for @order do |f| %>
-			
+			<!-- AWB Number -->
 			<div class="form-inline">
-				<label>Bruh</label>
-				<%= f.text_field :delivered_by, class: "col form-control", :required => true %>
+				<label>Prefix</label>
+				<%= f.text_field :prefix, class: "col-md-1 col-2 form-control", :required => true %>
+				<label>AWB</label>
+				<%= f.text_field :awbnum, class: "col-md-2 col form-control", :required => true %>
 			</div>
 
+			<div class="form-inline">
+				<label>Terminal Charge</label>
+				<%= f.text_field :terminal_charge, class: "col-md-1 col form-control", :required => true %>
+			</div>
+
+			<div class="form-inline">
+				<label>Pieces</label>
+				<%= f.text_field :pieces, class: "col-md-1 col form-control", :required => true %>
+			</div>
+
+			<div class="form-inline">
+				<label>Perishable Status</label>
+				<%= f.text_field :perishable_status, class: "col-md-2 col form-control", :required => true %>
+			</div>
+			<hr>
+			<div class="form-inline">
+				<label>Pieces Found</label>
+				<%= f.text_field :pieces_found, class: "col-md-1 col form-control", :required => true %>
+			</div>
+			<div class="form-inline">
+				<label>Release Type</label>
+				<%= f.text_field :partial_release, class: "col-md-2 col form-control", :required => true %>
+			</div>
+			<div class="form-inline">
+				<label>Located Time</label>
+				<%= f.text_field :located_time, class: "col-md-2 col form-control", :required => true %>
+			</div>
+			
+			<div class="form-inline">
+				<label>Documents Arranged</label>
+				<%= f.text_field :arranged_time, class: "col-md-2 col form-control", :required => true %>
+			</div>
+			<hr>
+			<div class="form-inline">
+				<label>Delivered By</label>
+				<%= f.text_field :delivered_by, class: "col-md-2 col form-control", :required => true %>
+			</div>
+			
+			<div class="form-inline">
+				<label>Delivery Time</label>
+				<%= f.text_field :delivery_time, class: "col-md-2 col form-control", :required => true %>
+			</div>
+
+			<%= f.submit class: "btn btn-sm btn-outline-primary" %>
 		<% end %>
+
+		<br><br><br>
 
 	</div>
 </section>

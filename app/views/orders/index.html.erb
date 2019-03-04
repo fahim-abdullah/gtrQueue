@@ -22,6 +22,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                            <!-- <th>id</th> -->
                             <th>AWB Number</th>
                             <th>Time of Request</th>
                             <th>Action</th>
@@ -30,6 +31,7 @@
                     <tbody>
                         <% @orders.each do |order| %>
                         <tr>
+                            <!-- <td><%= order.id %></td> -->
                             <% if order.perishable_status == "Perishable" %>
                             <td><%= "#{order.prefix}-#{order.awbnum}"%> <span style="font-size: 12px" class="badge badge-danger align-text-top">PER</span></td>
                             <% else %>

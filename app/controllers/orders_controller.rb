@@ -78,10 +78,8 @@ class OrdersController < ApplicationController
 		Time.zone = "Kuala Lumpur"
 	end
 	def order_find
-		if !session[:order_id].nil?
-      		@order = Order.find(params[:order_id])
-      	else
-      		redirect_to new_order_path
-      	end
+
+      	@order = Order.find(params[:order_id])
+
     end
 end

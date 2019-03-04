@@ -1,18 +1,26 @@
-<br><br><br>
+<style type="text/css">
+	p {
+		margin: 5px 0;
+	}
+</style>
 
-<h1>Showing stuff </h1>
-
-<p>Prefix : <%= @order.prefix %></p>
-<p>AWB : <%= @order.awbnum %></p>
-<p>Terminal Charge : <%= @order.terminal_charge %></p>
-<p>Pieces : <%= @order.pieces %></p>
-<p>Perishable Status : <%= @order.perishable_status %></p>
-<hr>
-<p>Pieces Found : <%= @order.pieces_found %></p>
-<p>Partial Status : <%= @order.partial_release %></p>
-<p>Located Time : <%= @order.located_time %></p>
-<hr>
-<p>Documents Arranged : <%= @order.arranged_time %></p>
-<hr>
-<p>Delivered by : <%= @order.delivered_by %></p>
-<p>Delivery time : <%= @order.delivery_time %></p>
+<div class="container">
+	<div class="heading">
+		<h1>Showing Record : <%= "#{@order.prefix}-#{@order.awbnum}" %></h1>
+	</div>
+	
+	<p>Prefix : <%= @order.prefix %></p>
+	<p>AWB : <%= @order.awbnum %></p>
+	<p>Terminal Charge : <%= @order.terminal_charge %></p>
+	<p>Pieces : <%= @order.pieces %></p>
+	<p>Perishable Status : <%= @order.perishable_status %></p>
+	<hr>
+	<p>Pieces Found : <%= @order.pieces_found %></p>
+	<p>Partial Status : <%= @order.partial_release %></p>
+	<p>Located Time : <%= @order.located_time %></p>
+	<hr>
+	<p>Documents Arranged : <%= @order.arranged_time %></p>
+	<hr>
+	<p>Delivered by : <%= @order.delivered_by %></p>
+	<p>Delivery time : <%= @order.delivery_time %></p>
+</div>
