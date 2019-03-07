@@ -1,8 +1,9 @@
 <style type="text/css">
     table thead tr th, table tbody tr td {
-        font-size: 18px;
+        font-size: 24px;
     }
-    .btn {
+
+    table .btn {
         padding: 3px 12px;
     }
 </style>
@@ -39,9 +40,9 @@
                             <% end %>
                             <td><%= order.created_at.strftime("%I:%M %p") if order.created_at != nil %></td>
                             <td>
-                                <%= link_to 'Edit', edit_order_path(order), class: 'btn btn-sm btn-outline-warning' %>
-                                <%= link_to 'Show', order_path(order), class: 'btn btn-sm btn-outline-primary' %>
-                                <%= link_to 'Delete', order_path(order), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger' %>
+                                <%= link_to 'Edit', edit_order_path(order), class: 'btn btn-warning' %>
+                                <%= link_to 'Show', order_path(order), class: 'btn btn-primary' %>
+                                <%= link_to 'Delete', order_path(order), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger' %>
                             </td>
                         </tr>
                         <% end %>

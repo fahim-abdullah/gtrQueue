@@ -44,6 +44,12 @@
                         <label> Perishable</label>
                         <%= f.text_field :perishable_status, :id => "per-status", value: "Non-Perishable", :required => true, hidden: true %>
                 </div>
+
+                <!-- <div class="switch">
+                  <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox" value="adasd">
+                  <label for="cmn-toggle-1">hu</label>
+                </div> -->
+
                 <hr>
                 <%= f.submit class: "btn btn-primary" %>
             <% end %>
