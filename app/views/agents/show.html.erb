@@ -1,0 +1,18 @@
+<style type="text/css">
+	p {
+		margin: 5px 0;
+		font-size: 24px;
+		font-weight: 200;
+	}
+</style>
+
+<div class="container">
+	<div class="heading">
+		<h2>Showing Agent</h2>
+		<hr>
+	</div>
+	
+	<p class="jumbotron">Agent Name : <strong><%= @agent.name %></strong></p>
+	<%= link_to "Back", agents_path, :class => "btn btn-outline-primary" %>
+	
+</div>

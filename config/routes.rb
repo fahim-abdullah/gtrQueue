@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   	get 'documents', 'locate', 'deliver'
   end
 
+  resources :agents
+
   get 'status_table', to: 'orders#status_table'
   get 'requests_table', to: 'orders#requests_table'
   get 'progress_table', to: 'orders#progress_table'

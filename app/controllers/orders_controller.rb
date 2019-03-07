@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
 	def create
 		@order = Order.new(order_params)
 		if @order.save
-			redirect_to status_table_path
+			redirect_to new_order_path
 		else
 			render 'new'
 		end
@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
 			# flash[:notice] = "Updated"
 			redirect_to status_table_path
 		else
-			# render 'documents'
+			render 'documents'
 		end
 	end
 	
@@ -72,14 +72,12 @@ class OrdersController < ApplicationController
 
 	private
 	def order_params 
-		params.require(:order).permit(:prefix, :awbnum, :terminal_charge, :pieces, :perishable_status, :pieces_found, :partial_release, :located_time, :arranged_time, :delivered_by, :delivery_time)
+		params.require(:order).permit(:prefix, :awbnum, :terminal_charge, :agent_name, :pieces, :perishable_status, :pieces_found, :partial_release, :located_time, :arranged_time, :delivered_by, :delivery_time)
 	end
 	def set_timezone
 		Time.zone = "Kuala Lumpur"
 	end
 	def order_find
-
       	@order = Order.find(params[:order_id])
-
     end
 end
