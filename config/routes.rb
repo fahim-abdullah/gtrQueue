@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :agents
+  resources :staffs
 
   get 'status_table', to: 'orders#status_table'
   get 'requests_table', to: 'orders#requests_table'

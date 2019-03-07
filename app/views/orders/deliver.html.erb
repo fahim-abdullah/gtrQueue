@@ -2,12 +2,12 @@
     h3 {
         font-weight: 300;
     }
-    .form-control {
+    select[name="staff_picker"] {
         border-style: none;
         border: 1px solid black;
         border-radius: 1px;
     }
-    
+
     .jumbotron {
         background: #f2f2f2;
     }
@@ -28,8 +28,15 @@
                     <%= form_for @order do |f| %>
                     
                         <h3 class="text-danger">Delivered By : </h3>
-                        <%= f.text_field :delivered_by, class: "col form-control", :required => true %>
-                    
+                        <select id="staff_picker" name="staff_picker" class="col form-control">
+                            <option selected="true" disabled="disabled">Choose a Staff</option>    
+                            <% Staff.pluck(:name).each do |staff| %>
+                            <option value="<%= staff %>"><%= staff %></option>
+                            <% end %>
+                        </select>
+
+                        <%= f.text_field :delivered_by, id: "staff_name", class: "col form-control", :required => true, value: "", hidden: true %>
+
                         <button type="button" class='btn-auth align-middle'>Authenticate</button>
                         <%= f.text_field :delivery_time, id: "authenticate", :required => true, hidden: true %>
                         <%= f.submit "Deliver", class: "btn btn-primary", id: "delivery-submit", disabled: true %>
@@ -71,5 +78,12 @@
                 document.getElementById("delivery-submit").disabled = false;
             }, 1500);
         });
+    })
+
+    jQuery(function($){
+        var $idval = $('#staff_name');
+        $('select[name="staff_picker"]').change(function(){
+            $idval.val($(this).val())
+        }).triggerHandler('change')
     })
 </script>

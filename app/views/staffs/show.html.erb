@@ -1,0 +1,22 @@
+<style type="text/css">
+	p {
+		margin: 5px 0;
+		font-size: 24px;
+		font-weight: 200;
+	}
+</style>
+
+<div class="container">
+	<div class="heading">
+		<h2>Showing Staff</h2>
+		<hr>
+	</div>
+
+	<div class="jumbotron">
+		<p> Staff Name : <strong><%= @staff.name %></strong></p>
+		<p> Staff ID : <strong><%= @staff.staff_id %></strong></p>
+	</div>
+	
+	<%= link_to "Back", staffs_path, :class => "btn btn-outline-primary" %>
+	
+</div>
