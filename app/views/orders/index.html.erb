@@ -2,7 +2,6 @@
     table thead tr th, table tbody tr td {
         font-size: 24px;
     }
-
     table .btn {
         padding: 3px 12px;
     }
@@ -20,12 +19,12 @@
         
         <div class="row">
             <div class="col-12">
-                <table class="table table-hover">
+                <table id="order-table" class="table table-hover">
                     <thead>
                         <tr>
                             <!-- <th>id</th> -->
                             <th>AWB Number</th>
-                            <th>Time of Request</th>
+                            <th>Time & Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -38,7 +37,7 @@
                             <% else %>
                             <td><%= "#{order.prefix}-#{order.awbnum}"%></td>
                             <% end %>
-                            <td><%= order.created_at.strftime("%I:%M %p") if order.created_at != nil %></td>
+                            <td><%= order.created_at.strftime("%I:%M %p, %m/%d/%Y") if order.created_at != nil %></td>
                             <td>
                                 <%= link_to 'Edit', edit_order_path(order), class: 'btn btn-warning' %>
                                 <%= link_to 'Show', order_path(order), class: 'btn btn-primary' %>
@@ -52,3 +51,9 @@
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#order-table').DataTable();
+  } );
+</script>

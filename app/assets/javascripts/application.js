@@ -9,17 +9,14 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
 //= require rails-ujs
 //= require activestorage
-//= require jquery.turbolinks
 //= require turbolinks
-//= require_tree .
-//= require jquery3
-//= require jquery-ui
-//= require popper
+//= require jquery.turbolinks
+//= require jquery
 //= require bootstrap-sprockets
-
+//= require_tree .
 
 function toggleFullscreen(elem) {
   elem = elem || document.documentElement;

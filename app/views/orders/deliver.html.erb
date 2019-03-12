@@ -50,11 +50,12 @@
 <script type="text/javascript">
     $(function() {
         var d = new Date();
+        var dateNum = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
         var amOrPm = (d.getHours() < 12) ? "AM" : "PM";
-        var hour = (d.getHours() < 12) ? d.getHours() : d.getHours() - 12;
+        var hour = (d.getHours() < 13) ? d.getHours() : (d.getHours() - 12);
         var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
-        var strTime;
-        
+        var strTime = [];
+
         // Animation
         var btn = $(".btn-auth");
         btn.on("click", function() {
@@ -70,7 +71,7 @@
             }, 1500);
             
             // Time
-            strTime = hour + ':' + minutes + ' ' + amOrPm; 
+            strTime = [hour + ':' + minutes + ' ' + amOrPm, dateNum];
             $("#authenticate").val(strTime);
             
             // Submit Button
