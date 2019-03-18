@@ -7,9 +7,6 @@
 
 </style>
 
-
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-sm-12 col-12">
@@ -23,7 +20,7 @@
                 <%= f.text_field :awbnum, class: 'col-8', placeholder: "AWB Number", :required => true, maxlength: 8, minlength: 8 %>
 
                 <div id="autocomplete">
-                <%= f.text_field :agent_name, list:"browsers", name:"browser", class: "col-7", :required => true, placeholder: "Agent Name" %>
+                <%= f.text_field :agent_name, list:"browsers", class: "col-7", :required => true, placeholder: "Agent Name" %>
                     <datalist id="browsers">
                         <% Agent.pluck(:name).each do |agent| %>
                         <option value="<%= agent %>">
@@ -32,18 +29,22 @@
                 </div>
 
                 <button type="button" id="tcBtn" class="btn tcBtn shadow-none" >Terminal Charge : UNPAID</button>
-                <%= f.text_field :terminal_charge, class: "col-2", :id => "tc", :required => true, placeholder: "TC", hidden: true %>
+                <%= f.text_field :terminal_charge, class: "col-2", :id => "tc", :required => true, placeholder: "TC", hidden: true, readonly: true %>
 
                 <div>
                     <label>Pieces : </label>
                     <%= f.text_field :pieces, class: 'col-2', :required => true %>
                 </div>
 
-                <div class="form-group">
-                        <input type="checkbox" data-toggle="toggle" data-style="ios" data-onstyle="warning" data-offstyle="success" id="per-btn">
-                        <label> Perishable</label>
-                        <%= f.text_field :perishable_status, :id => "per-status", value: "Non-Perishable", :required => true, hidden: true %>
+                <div class="form-group" style="position: relative;">
+                    <div id="per-btn" class="custom-switch custom-switch-label-yesno" style="display: inline-block; padding: 0; margin-top: 5px;">
+                        <input class="custom-switch-input" id="example_1" type="checkbox">
+                        <label class="custom-switch-btn" for="example_1"></label>
+                    </div>
+                    <label style="position: absolute; top: 12px; left: 75px;">Perishable</label>
+                    <%= f.text_field :perishable_status, :id => "per-status", value: "Non-Perishable", :required => true, hidden: true, readonly: true %>
                 </div>
+
 
                 <!-- <div class="switch">
                   <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox" value="adasd">
@@ -58,7 +59,14 @@
 </div>
 
 <script type="text/javascript">
-    
+
+    $(function() {
+       initPage();
+    });
+    $(window).bind('turbolinks:load', function() {
+      initPage();
+    })
+
     $('#tcBtn').on('click',function(){
         if ($(this).text() == "Terminal Charge : UNPAID"){
             $(this).text("Terminal Charge : PAID");
@@ -80,12 +88,13 @@
     // PERISHABLE BUTTON
     $("#per-btn").change(function() {
     var value;
-    if (this.checked) {
+    if ($('#per-status').val() == "Non-Perishable") {
         value = "Perishable";
     } else {
         value = "Non-Perishable"
     }
     $("#per-status").val(value);
     });
-    
+
 </script>
+

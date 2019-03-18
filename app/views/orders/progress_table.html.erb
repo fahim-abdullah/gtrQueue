@@ -28,7 +28,7 @@
                             <% else %>
                             <td><%= "#{order.prefix}-#{order.awbnum}"%></td>
                             <% end %>
-                            <td><%= order.created_at.strftime("%I:%M %p") if order.created_at != nil %></td>
+                            <td><%= order.created_at.strftime("%I:%M %p")%></td>
                             
                             <% if order.delivery_time.present? %>
                                 <td>

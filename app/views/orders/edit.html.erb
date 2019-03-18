@@ -18,52 +18,58 @@
 			<!-- AWB Number -->
 			<div class="form-inline">
 				<label>Prefix</label>
-				<%= f.text_field :prefix, class: "col-md-1 col-2 form-control", :required => true %>
+				<%= f.text_field :prefix, class: "col-md-1 col-2 form-control" %>
 				<label>AWB</label>
-				<%= f.text_field :awbnum, class: "col-md-2 col form-control", :required => true %>
+				<%= f.text_field :awbnum, class: "col-md-2 col form-control" %>
 			</div>
 
 			<div class="form-inline">
+				<label>Agent Name</label>
+				<%= f.text_field :agent_name, class: "col-md-2 col form-control"%>
+              
+            </div>
+
+			<div class="form-inline">
 				<label>Terminal Charge</label>
-				<%= f.text_field :terminal_charge, class: "col-md-1 col form-control", :required => true %>
+				<%= f.text_field :terminal_charge, class: "col-md-1 col form-control" %>
 			</div>
 
 			<div class="form-inline">
 				<label>Pieces</label>
-				<%= f.text_field :pieces, class: "col-md-1 col form-control", :required => true %>
+				<%= f.text_field :pieces, class: "col-md-1 col form-control" %>
 			</div>
 
 			<div class="form-inline">
 				<label>Perishable Status</label>
-				<%= f.text_field :perishable_status, class: "col-md-2 col form-control", :required => true %>
+				<%= f.text_field :perishable_status, class: "col-md-2 col form-control" %>
 			</div>
 			<hr>
 			<div class="form-inline">
 				<label>Pieces Found</label>
-				<%= f.text_field :pieces_found, class: "col-md-1 col form-control", :required => true %>
+				<%= f.text_field :pieces_found, class: "col-md-1 col form-control" %>
 			</div>
 			<div class="form-inline">
 				<label>Release Type</label>
-				<%= f.text_field :partial_release, class: "col-md-2 col form-control", :required => true %>
+				<%= f.text_field :partial_release, class: "col-md-2 col form-control" %>
 			</div>
 			<div class="form-inline">
 				<label>Located Time</label>
-				<%= f.text_field :located_time, class: "col-md-2 col form-control", :required => true %>
+				<%= f.text_field :located_time, class: "col-md-2 col form-control" %>
 			</div>
 			
 			<div class="form-inline">
 				<label>Documents Arranged</label>
-				<%= f.text_field :arranged_time, class: "col-md-2 col form-control", :required => true %>
+				<%= f.text_field :arranged_time, class: "col-md-2 col form-control" %>
 			</div>
 			<hr>
 			<div class="form-inline">
 				<label>Delivered By</label>
-				<%= f.text_field :delivered_by, class: "col-md-2 col form-control", :required => true %>
+				<%= f.text_field :delivered_by, class: "col-md-2 col form-control" %>
 			</div>
 			
 			<div class="form-inline">
 				<label>Delivery Time</label>
-				<%= f.text_field :delivery_time, class: "col-md-2 col form-control", :required => true %>
+				<%= f.text_field :delivery_time, class: "col-md-2 col form-control" %>
 			</div>
 
 			<%= f.submit class: "btn btn-sm btn-outline-primary" %>

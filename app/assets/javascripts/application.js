@@ -18,6 +18,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+
 function toggleFullscreen(elem) {
   elem = elem || document.documentElement;
   if (!document.fullscreenElement && !document.mozFullScreenElement &&

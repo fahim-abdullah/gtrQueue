@@ -9,11 +9,16 @@
                 	<p>AWB Number : <%= "#{@order.prefix}-#{@order.awbnum}" %></p>
                 </div>
                 <%= form_for @order do |f| %>
-                    <div class="form-group">
-                        <input type="checkbox" data-toggle="toggle" data-style="ios" data-onstyle="success" data-offstyle="danger" id="doc-btn">
-                        <label>Documents Arranged</label>
-                        <%= f.text_field :arranged_time, id: "doc-status", value: "", :required => true, hidden: true %>
+
+                    <div class="form-group" style="position: relative;">
+                        <div id="doc-btn" class="custom-switch custom-switch-label-yesno" style="display: inline-block; padding: 0; margin-top: 5px;">
+                            <input class="custom-switch-input" id="example_1" type="checkbox">
+                            <label class="custom-switch-btn" for="example_1"></label>
+                        </div>
+                        <label style="position: absolute; top: 12px; left: 75px;">Documents Arranged</label>
+                        <%= f.text_field :arranged_time, id: "doc-status", value: "", :required => true, hidden: true, readonly: true %>
                     </div>
+
                     <hr>
                     <%= f.submit "Update Progress", class: "btn btn-outline-primary" %>
                 <% end %>
@@ -23,17 +28,7 @@
 </section>
 
 <script type="text/javascript">
-	$("#doc-btn").change(function() {
-        var d = new Date();
-        var dateNum = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
-        var amOrPm = (d.getHours() < 12) ? "AM" : "PM";
-        var hour = (d.getHours() < 13) ? d.getHours() : (d.getHours() - 12);
-        var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
-        var strTime = [];
-        
-        if (this.checked) {
-            strTime = [hour + ':' + minutes + ' ' + amOrPm, dateNum];
-        }
-        $("#doc-status").val(strTime);
-	});
+    $("#doc-btn").change(function() {
+        $("#doc-status").val("<%= Time.now %>");
+    });
 </script>

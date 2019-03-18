@@ -33,7 +33,7 @@
                                 <% end %>
                                 <td><%= "#{order.pieces}"%></td>
                                 <td><%= "#{order.pieces_found}"%></td>
-                                <td><%= order.created_at.strftime("%I:%M %p") if order.created_at != nil %></td>
+                                <td><%= order.created_at.strftime("%I:%M %p") %></td>
 
                                 <!-- <%  order.delivery_time.present? %> -->
                                 <% if order.located_time.present? && order.arranged_time.present? %>

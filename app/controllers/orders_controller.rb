@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
 	before_action :set_timezone
 	before_action :order_find, only: [:documents, :locate, :deliver]
+	before_action :all_orders, only: [:index, :status_table, :requests_table, :progress_table, :delivery_table]
 
 	def index
-		@orders = Order.all
 	end
 
 	def edit
@@ -54,30 +54,31 @@ class OrdersController < ApplicationController
 	end
 
 	def status_table
-		@orders = Order.all
 		# @orders.map {|order| order.created_at.strftime("%I:%M") if order.created_at != nil }
 	end
 
 	def requests_table
-		@orders = Order.all
 	end
 
 	def progress_table
-		@orders = Order.all
 	end
 
 	def delivery_table
-		@orders = Order.all
 	end
 
 	private
 	def order_params 
 		params.require(:order).permit(:prefix, :awbnum, :terminal_charge, :agent_name, :pieces, :perishable_status, :pieces_found, :partial_release, :located_time, :arranged_time, :delivered_by, :delivery_time)
 	end
+
 	def set_timezone
 		Time.zone = "Kuala Lumpur"
 	end
 	def order_find
       	@order = Order.find(params[:order_id])
+    end
+
+    def all_orders
+    	@orders = Order.all
     end
 end

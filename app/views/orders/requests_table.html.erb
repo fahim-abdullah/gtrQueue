@@ -31,12 +31,23 @@
                             <% end %>
 
                             <td><%= order.pieces %></td>
-                            <td><%= order.created_at.strftime("%I:%M %p") if order.created_at != nil %></td>
+                            <td><%= order.created_at.strftime("%I:%M %p") %></td>
 
                             <td>
-                                <%= link_to 'Locate', order_locate_path(order), class: 'btn btn-success' %>
-                                <%= link_to 'Documents', order_documents_path(order), class: 'btn btn-warning' %> 
+                                <!-- Locate -->
+                                <% if order.located_time.present? %>
+                                    <%= link_to 'Locate', order_locate_path(order), class: 'btn btn-success disabled' %>
+                                <% else %> 
+                                    <%= link_to 'Locate', order_locate_path(order), class: 'btn btn-success' %>   
+                                <% end %>
+                                <!-- Documents -->
+                                <% if order.arranged_time.present? %>
+                                    <%= link_to 'Documents', order_documents_path(order), class: 'btn btn-warning disabled' %>
+                                <% else %> 
+                                    <%= link_to 'Documents', order_documents_path(order), class: 'btn btn-warning' %> 
+                                <% end %>
                             </td>
+                            
                         </tr>
                         <% end %>
                         <% end %>

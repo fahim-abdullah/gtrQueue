@@ -38,7 +38,7 @@
                         <%= f.text_field :delivered_by, id: "staff_name", class: "col form-control", :required => true, value: "", hidden: true %>
 
                         <button type="button" class='btn-auth align-middle'>Authenticate</button>
-                        <%= f.text_field :delivery_time, id: "authenticate", :required => true, hidden: true %>
+                        <%= f.text_field :delivery_time, id: "authenticate", :required => true, hidden: false, readonly: true %>
                         <%= f.submit "Deliver", class: "btn btn-primary", id: "delivery-submit", disabled: true %>
                     <% end %>
                 </div>
@@ -49,35 +49,27 @@
 
 <script type="text/javascript">
     $(function() {
-        var d = new Date();
-        var dateNum = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
-        var amOrPm = (d.getHours() < 12) ? "AM" : "PM";
-        var hour = (d.getHours() < 13) ? d.getHours() : (d.getHours() - 12);
-        var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
-        var strTime = [];
-
         // Animation
         var btn = $(".btn-auth");
         btn.on("click", function() {
             $(this).addClass('btn-progress');
             setTimeout(function() {
                 btn.addClass('btn-fill')
-            }, 300);
+            }, 150);
             setTimeout(function() {
                 btn.removeClass('btn-fill')
-            }, 1500);
+            }, 750);
             setTimeout(function() {
                 btn.addClass('btn-complete')
-            }, 1500);
+            }, 750);
             
             // Time
-            strTime = [hour + ':' + minutes + ' ' + amOrPm, dateNum];
-            $("#authenticate").val(strTime);
+            $("#authenticate").val("<%= Time.now %>");
             
             // Submit Button
             setTimeout(function() {
                 document.getElementById("delivery-submit").disabled = false;
-            }, 1500);
+            }, 750);
         });
     })
 
