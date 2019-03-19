@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
 
 	def create
 		@order = Order.new(order_params)
+		@order.user = User.first
 		if @order.save
 			redirect_to new_orders_path
 		else
@@ -33,7 +34,7 @@ class OrdersController < ApplicationController
 			# flash[:notice] = "Updated"
 			redirect_to status_table_path
 		else
-			render 'documents'
+			render 'requests_table'
 		end
 	end
 	
