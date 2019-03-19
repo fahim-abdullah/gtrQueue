@@ -2,6 +2,7 @@ class AgentsController < ApplicationController
 	before_action :set_timezone
 
 	def index
+		redirect_to login_path if !logged_in?
 		@agents = Agent.all
 	end
 
@@ -50,5 +51,4 @@ class AgentsController < ApplicationController
 	def set_timezone
 		Time.zone = "Kuala Lumpur"
 	end
-	
 end

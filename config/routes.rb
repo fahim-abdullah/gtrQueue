@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   resources :agents
   resources :staffs
 
+  resources :users
+
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
   get 'status_table', to: 'orders#status_table'
   get 'requests_table', to: 'orders#requests_table'
   get 'progress_table', to: 'orders#progress_table'

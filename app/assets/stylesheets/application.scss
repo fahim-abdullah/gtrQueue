@@ -17,7 +17,6 @@
 @import "toggler.css";
 @import "jquery.dataTables";
 @import "deliver.css";
-@import "_titatoggle.css.scss";
 @import "component-custom-switch.css";
 
 body {
@@ -63,12 +62,12 @@ form input {
 .nav-link:hover {
     color: white;
     background-color: black;
-    transform: scale(1.08);
+    
 }
 
 #btnFullscreen:hover {
     background-color: transparent;
-    transform: scale(1.5);
+    transform: scale(1.2);
 }
 
 .dot {

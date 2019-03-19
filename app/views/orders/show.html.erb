@@ -24,4 +24,6 @@
 	<hr>
 	<p>Delivered by : <%= @order.delivered_by %></p>
 	<p>Delivery time : <%= @order.delivery_time %></p>
+	<hr>
+	<%= link_to "Back", orders_path, :class => "btn btn-outline-primary btn-sm" %>
 </div>

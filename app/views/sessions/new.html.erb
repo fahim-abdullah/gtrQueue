@@ -1,0 +1,33 @@
+<style type="text/css">
+	.btn {
+		margin-top: 10px;
+	}
+	.jumbotron {
+		margin-bottom: 0;
+	}
+</style>
+
+<section>
+	<div class="container" align="center">
+		<div class="col-md-10 col-12 jumbotron" align="center">
+            <h1>Official Login</h1>
+            <p>Login as an official to gain access to certain actions.</p>
+            <%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: login_path) do |f| %>
+            <div class="cargo-info col-12 col-md-8">
+                <div class="jumbotron bg-light text-dark">
+	                <p>Username : <%= f.text_field :username, class: "form-control form-control-sm border-dark", required: true %></p>
+	                <p>Password : <%= f.text_field :password, class: "form-control form-control-sm border-dark", required: true %></p>
+	                <%= f.submit "Log in", class: 'btn btn-success' %> <%= link_to "Check Progress", progress_table_path, class: "btn btn-warning btn-sm"%>
+                </div>
+            </div>
+            <% end %>
+        </div>
+	</div>
+</section>
+
+
+
+
+
+
+

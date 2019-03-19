@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
 	before_action :set_timezone
+	before_action :require_user, except: [:progress_table]
+	before_action :require_admin, only: [:index, :edit]
 	before_action :order_find, only: [:documents, :locate, :deliver]
 	before_action :all_orders, only: [:index, :status_table, :requests_table, :progress_table, :delivery_table]
 
@@ -16,7 +18,6 @@ class OrdersController < ApplicationController
 
 	def create
 		@order = Order.new(order_params)
-		@order.user = User.first
 		if @order.save
 			redirect_to new_orders_path
 		else
@@ -44,7 +45,7 @@ class OrdersController < ApplicationController
 		# flash[:notice] = "Article was successfully deleted"
 		redirect_to orders_path
 	end
-	
+
 	def documents 
 	end
 
@@ -71,14 +72,12 @@ class OrdersController < ApplicationController
 	def order_params 
 		params.require(:order).permit(:prefix, :awbnum, :terminal_charge, :agent_name, :pieces, :perishable_status, :pieces_found, :partial_release, :located_time, :arranged_time, :delivered_by, :delivery_time)
 	end
-
 	def set_timezone
 		Time.zone = "Kuala Lumpur"
 	end
 	def order_find
       	@order = Order.find(params[:order_id])
     end
-
     def all_orders
     	@orders = Order.all
     end

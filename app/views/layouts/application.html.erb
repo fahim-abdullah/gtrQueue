@@ -9,6 +9,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/css/bootstrap4-toggle.min.css">
 
@@ -18,43 +20,13 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <%= image_tag("rcLogo.png", width: '85px') %> | 
-                <%= image_tag("gtrLogo3.png", width: '100px') %>
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" style="border-color: rgb(120,120,120); border-radius:2px; padding: 4px 8px">
-                <%= image_tag("ham.png", width: '28px') %>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <%= link_to "Create Order", new_order_path, :class => 'nav-link' %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to "Requests", requests_table_path, :class => 'nav-link' %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to "Order Status", status_table_path, :class => 'nav-link' %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to "Delivery Table", delivery_table_path, :class => 'nav-link' %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to "Progress", progress_table_path, :class => 'nav-link' %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to image_tag("icons8-expand-filled-96.png", width: '18px'), '', :onclick => 'toggleFullscreen()', :id => 'btnFullscreen', :class => 'nav-link' %>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <%= render 'layouts/navigation' %>
 
     <%= yield %>
-
+    <footer>
+        <%=# debug(params) if Rails.env.development? %>    
+    </footer>
+    
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"></script>
     
   </body>

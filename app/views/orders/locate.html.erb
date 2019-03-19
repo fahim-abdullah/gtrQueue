@@ -7,8 +7,8 @@
 
             <div class="cargo-info col-12 col-md-6">
                 <div class="jumbotron bg-success">
-                <p class="text-white">AWB Number : <%= "#{@order.prefix}-#{@order.awbnum}" %></p>
-                <p class="text-white">Pieces : <%= "#{@order.pieces}" %></p>
+                    <p class="text-white">AWB Number : <%= "#{@order.prefix}-#{@order.awbnum}" %></p>
+                    <p class="text-white">Pieces : <%= "#{@order.pieces}" %></p>
                 </div>
 
                 <%= form_for @order do |f| %>

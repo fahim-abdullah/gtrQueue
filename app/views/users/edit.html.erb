@@ -1,0 +1,36 @@
+<style type="text/css">
+	.form-inline .form-control {
+		margin: 5px 10px;
+	}
+	.form-inline label {
+		margin: 0 0 0 0;
+		font-size: 16px;
+	}
+
+	.btn {
+		margin: 5px 10px 0 0;
+	}
+</style>
+
+<section>
+	<div class="container">
+		<br>
+		<h1>Edit User <span style="font-size: 15px" class="badge badge-warning align-top">Admin Only</span></h1>
+		<hr><br>	
+
+		<%= form_for @user do |f| %>
+
+			<div class="form-inline">
+				<label>Username</label>
+				<%= f.text_field :username, class: "col-md-2 col form-control", :required => true %>
+			</div>
+			<div class="form-inline">
+				<label>Password</label>
+				<%= f.text_field :password, class: "col-md-2 col form-control", :required => true %>
+			</div>
+			
+            <%= f.submit class: "btn btn-success btn-sm" %>
+            <%= link_to "Back", users_path, :class => "btn btn-outline-primary btn-sm" %>
+        <% end %>
+	</div>
+</section>
