@@ -26,7 +26,12 @@
 			</div>
 			<div class="form-inline">
 				<label>Password</label>
-				<%= f.text_field :password, class: "col-md-2 col form-control", :required => true %>
+				<%= f.text_field :password, class: "col-md-2 col form-control" %>
+			</div>
+
+			<div class="custom-control custom-switch">
+				<%= f.check_box :admin, :value => true, class: "custom-control-input", id: "customSwitch1" %>
+			  <label class="custom-control-label" for="customSwitch1">Admin Access</label>
 			</div>
 			
             <%= f.submit class: "btn btn-success btn-sm" %>

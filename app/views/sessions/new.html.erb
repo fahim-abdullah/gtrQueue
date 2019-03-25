@@ -13,7 +13,7 @@
             <div class="cargo-info col-12 col-md-8">
                 <div class="jumbotron bg-light text-dark">
 	                <p>Username : <%= f.text_field :username, class: "form-control form-control-sm border-dark", required: true %></p>
-	                <p>Password : <%= f.text_field :password, class: "form-control form-control-sm border-dark", required: true %></p>
+	                <p>Password : <%= f.password_field :password, class: "form-control form-control-sm border-dark", required: true %></p>
 	                <%= f.submit "Log in", class: 'btn btn-success' %> <%= link_to "Check Progress", progress_table_path, class: "btn btn-warning btn-sm"%>
                 </div>
             </div>
