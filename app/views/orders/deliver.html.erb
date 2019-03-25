@@ -38,7 +38,7 @@
                         <%= f.text_field :delivered_by, id: "staff_name", class: "col form-control", :required => true, value: "", hidden: true %>
 
                         <button type="button" class='btn-auth align-middle'>Authenticate</button>
-                        <%= f.text_field :delivery_time, id: "authenticate", :required => true, hidden: false, readonly: true %>
+                        <%= f.text_field :delivery_time, id: "authenticate", :required => true, hidden: true, readonly: true %>
                         <%= f.submit "Deliver", class: "btn btn-primary", id: "delivery-submit", disabled: true %>
                     <% end %>
                 </div>

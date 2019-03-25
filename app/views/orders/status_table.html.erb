@@ -24,7 +24,7 @@
                 </thead>
                 <tbody>
                     <% @orders.each do |order| %>
-                    
+                    <% if order.delivery_time == nil %>
                     <tr>
                         <!-- style="opacity: 0.9" class="bg-danger -->
                         <!-- spinner-grow -->
@@ -49,8 +49,40 @@
                         <td><%= order.arranged_time.to_datetime.strftime("%I:%M %p") if order.arranged_time.present? %></td>
                         <td><%= order.delivery_time.to_datetime.strftime("%I:%M %p") if order.delivery_time.present? %></td>
                     </tr>
-                    
                     <% end %>
+                    <% end %>
+
+                    <% @orders.each do |order| %>
+                    <% if order.delivery_time != nil %>
+                    <% if (Time.now - order.delivery_time.to_datetime) < 300 %>
+                    <tr>
+                        <!-- style="opacity: 0.9" class="bg-danger -->
+                        <!-- spinner-grow -->
+                        <!-- spinner-border -->
+                        <% if order.delivery_time.present? %>
+                            <td align="center" class="align-middle"><div class="dot bg-success"></div></td>
+                        <% elsif order.located_time.present? || order.arranged_time.present? %>
+                            <td align="center" class="align-middle"><div class="dot bg-warning"></div></td>
+                        <% else %>
+                            <td align="center" class="align-middle"><div class="dot bg-danger"></div></td>
+                        <% end %>
+
+                        <% if order.perishable_status == "Perishable" %>
+                            <td><%= "#{order.prefix}-#{order.awbnum}"%> <span style="font-size: 18px" class="badge badge-danger align-text-top">PER</span></td>
+                        <% else %>
+                            <td><%= "#{order.prefix}-#{order.awbnum}"%></td>
+                        <% end %>
+
+                        <td><%= order.pieces %></td>
+                        <td><%= order.created_at.strftime("%I:%M %p") if order.created_at != nil %></td>
+                        <td><%= order.located_time.to_datetime.strftime("%I:%M %p") if order.located_time.present? %></td>
+                        <td><%= order.arranged_time.to_datetime.strftime("%I:%M %p") if order.arranged_time.present? %></td>
+                        <td><%= order.delivery_time.to_datetime.strftime("%I:%M %p") if order.delivery_time.present? %></td>
+                    </tr>
+                    <% end %>
+                    <% end %>
+                    <% end %>
+
                 </tbody>
             </table>
         </div>

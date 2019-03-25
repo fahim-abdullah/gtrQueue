@@ -6,9 +6,6 @@ class Order < ApplicationRecord
 	after_update_commit { OrderBroadcastJob.perform_later self }  
 	after_destroy { OrderBroadcastJob.perform_later self }  
 
-
-
-
 	# after_create :located_datetime, :documents_datetime, :delivery_time
 
 
