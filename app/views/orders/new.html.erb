@@ -45,7 +45,6 @@
                     <%= f.text_field :perishable_status, :id => "per-status", value: "Non-Perishable", :required => true, hidden: true, readonly: true %>
                 </div>
 
-
                 <!-- <div class="switch">
                   <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox" value="adasd">
                   <label for="cmn-toggle-1">hu</label>
@@ -57,44 +56,4 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-
-    $(function() {
-       initPage();
-    });
-    $(window).bind('turbolinks:load', function() {
-      initPage();
-    })
-
-    $('#tcBtn').on('click',function(){
-        if ($(this).text() == "Terminal Charge : UNPAID"){
-            $(this).text("Terminal Charge : PAID");
-            $(this).css("background-color", "#00ae16");
-        }
-        else {
-            $(this).text("Terminal Charge : UNPAID");
-            $(this).css("background-color", "red");
-        }
-        
-        if ($('#tc').val() == ""){
-            $('#tc').val("Paid");
-        }
-        else {
-            $('#tc').val("");
-        }
-    });
-
-    // PERISHABLE BUTTON
-    $("#per-btn").change(function() {
-    var value;
-    if ($('#per-status').val() == "Non-Perishable") {
-        value = "Perishable";
-    } else {
-        value = "Non-Perishable"
-    }
-    $("#per-status").val(value);
-    });
-
-</script>
 
